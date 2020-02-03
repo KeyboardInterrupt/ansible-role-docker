@@ -1,0 +1,48 @@
+---
+dependency:
+  name: galaxy
+driver:
+  name: docker
+lint:
+  name: yamllint
+  options:
+    config-file: molecule/default/yaml-lint.yml
+platforms:
+  - name: ubuntu1604
+    image: "geerlingguy/docker-ubuntu1604-ansible"
+    privileged: true
+    volumes:
+      - /sys/fs/cgroup:/sys/fs/cgroup:ro
+    pre_build_image: true
+  - name: ubuntu1804
+    image: "geerlingguy/docker-ubuntu1804-ansible"
+    privileged: true
+    volumes:
+      - /sys/fs/cgroup:/sys/fs/cgroup:ro
+    pre_build_image: true
+  - name: centos7
+    image: "geerlingguy/docker-centos7-ansible"
+    privileged: true
+    volumes:
+      - /sys/fs/cgroup:/sys/fs/cgroup:ro
+    pre_build_image: true
+  - name: centos8
+    image: "geerlingguy/docker-centos8-ansible"
+    privileged: true
+    volumes:
+      - /sys/fs/cgroup:/sys/fs/cgroup:ro
+    pre_build_image: true
+
+provisioner:
+  name: ansible
+  lint:
+    name: ansible-lint
+  playbooks:
+    prepare: prepare.yml
+    converge: playbook.yml
+scenario:
+  name: default
+verifier:
+  name: testinfra
+  lint:
+    name: flake8

@@ -1,0 +1,25 @@
+---
+dependencies: []
+
+galaxy_info:
+  role_name: docker
+  author: KeyboardInterrupt
+  description: Docker for Linux.
+  license: "license (BSD, MIT)"
+  min_ansible_version: 2.8
+  platforms:
+    - name: EL
+      versions:
+        - 7
+        - 8
+    - name: Ubuntu
+      versions:
+        - xenial
+        - bionic
+  galaxy_tags:
+    - system
+    - containers
+    - docker
+    - orchestration
+    - compose
+    - server
