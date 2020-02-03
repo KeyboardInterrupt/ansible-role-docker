@@ -3,3 +3,4 @@
   service:
     name: docker
     state: "{{ docker_restart_handler_state }}"
+  become: true
